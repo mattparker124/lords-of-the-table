@@ -1,14 +1,13 @@
+///Dice Variables
 let diceType = 6;
 let diceCount = 1;
-
 let outcome = 0;
-
 let diceSelector = document.querySelector('#diceType');
 let countSelector = document.querySelector('#diceCount');
-
 let diceBtn = document.querySelector("#diceBtn");
+let diceResult = document.querySelector('#diceResult')
 
-
+///Function to define the dice roll
 let rollFunction = function(){
     diceType = diceSelector.value
     diceCount = countSelector.value
@@ -19,6 +18,7 @@ let rollFunction = function(){
         outcome = XdY(diceCount,diceType);
     }
     console.log(outcome);
+    diceResult.textContent = outcome
 }
 
 ///Dice Module
@@ -42,5 +42,5 @@ function XdY(x,y) {
 }
 ///End Dice Module
 
-
+//Roll Dice EventListener
 diceBtn.addEventListener('click', rollFunction);
