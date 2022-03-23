@@ -1,6 +1,29 @@
+let diceType = 6;
+let diceCount = 1;
+
+let outcome = 0;
+
+let diceSelector = document.querySelector('#diceType');
+let countSelector = document.querySelector('#diceCount');
+
+let diceBtn = document.querySelector("#diceBtn");
+
+
+let rollFunction = function(){
+    diceType = diceSelector.value
+    diceCount = countSelector.value
+    
+    if (diceCount == 1){
+        outcome = d(diceType);
+    } else {
+        outcome = XdY(diceCount,diceType);
+    }
+    console.log(outcome);
+}
+
+///Dice Module
 //x=number of dice
 //y=number of sides
-
 
 //function that rolls one die
 function d(y) {
@@ -17,3 +40,7 @@ function XdY(x,y) {
     
     return results;
 }
+///End Dice Module
+
+
+diceBtn.addEventListener('click', rollFunction);
