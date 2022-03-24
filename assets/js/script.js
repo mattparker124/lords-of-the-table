@@ -7,6 +7,9 @@ let countSelector = document.querySelector('#diceCount');
 let diceBtn = document.querySelector("#diceBtn");
 let diceResult = document.querySelector('#diceResult')
 
+// Notes Variables
+let notes = [];
+
 ///Function to define the dice roll
 let rollFunction = function(){
     diceType = diceSelector.value
@@ -41,6 +44,12 @@ function XdY(x,y) {
     return results;
 }
 ///End Dice Module
+
+// Notes Module
+let saveNotes = function() {
+    localStorage.setItem("notes", JSON.stringify(notes));
+}
+// End Notes Module
 
 //Roll Dice EventListener
 diceBtn.addEventListener('click', rollFunction);
