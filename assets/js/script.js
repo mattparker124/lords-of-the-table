@@ -10,6 +10,11 @@ let diceResult = document.querySelector('#diceResult')
 // Notes Variables
 let notes = [];
 
+// faceGen Variables
+let faceUrl = ""
+let generatorString = "00000"
+let characters = "1234567890abcdefghijklmnopqrstuvwxyz";
+
 ///Function to define the dice roll
 let rollFunction = function(){
     diceType = diceSelector.value
@@ -22,6 +27,10 @@ let rollFunction = function(){
     }
     console.log(outcome);
     diceResult.textContent = outcome
+}
+
+let selectDice = function(){
+    console.log(this)
 }
 
 ///Dice Module
@@ -102,6 +111,19 @@ $("#notesModule").on("click", "#deleteBtn", function() {
     }
 });
 // End Notes Module
+
+// Face Generator Api
+let generateFace = function(){
+    let result = ""
+    let poolLength = characters.length;
+    for (let i = 0; i < 7; i++){
+        result += characters.charAt(Math.random()*poolLength);
+    }
+    generatorString = result;
+    faceUrl = "https://robohash.org/"+generatorString+".png?set=set5"
+    console.log(faceUrl);
+}
+
 
 //Roll Dice EventListener
 diceBtn.addEventListener('click', rollFunction);
