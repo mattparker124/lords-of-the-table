@@ -62,6 +62,22 @@ let generateFace = function(){
     faceUrl = "https://robohash.org/"+generatorString+".png?set=set5"
     console.log(faceUrl);
 }
+//End Face Generator Api
+
+///Open5e functions
+let monsterName = "dragon"
+
+let searchForMonster = function(){
+    
+    fetch("https://api.open5e.com/monsters/?search="+monsterName)
+    .then(function(response){
+         return response.json();
+     })
+    .then(function(data){
+        console.log(data);
+    })
+    
+}
 
 
 //Roll Dice EventListener
