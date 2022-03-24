@@ -46,6 +46,24 @@ function XdY(x,y) {
 ///End Dice Module
 
 // Notes Module
+let changeNote = function(noteTitle) {
+    
+}
+
+let loadNotes = function() {
+    notes = JSON.parse(localStorage.getItem("notes"));
+
+    // if nothing is in localStorage, create a new array to track
+    if (!notes) {
+        notes = [];
+    }
+
+    // loop over the notes
+    $.each(notes, function() {
+
+    })
+}
+
 let saveNotes = function() {
     localStorage.setItem("notes", JSON.stringify(notes));
 }
