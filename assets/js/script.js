@@ -88,6 +88,17 @@ let searchClassFunction = function(){
     });
 }
 
+let searchRaceFunction = function(){
+    fetch("https://api.open5e.com/races/")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    });
+}
+//End open5e functions
+
 
 //Roll Dice EventListener
 diceBtn.addEventListener('click', rollFunction);
