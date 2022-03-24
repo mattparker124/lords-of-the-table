@@ -69,6 +69,15 @@ $("#notesModule").on("click", "#saveBtn", function() {
     let textP = $("<p>").addClass("").text(text);
     $(this).parent().find("#description").replaceWith(textP);
 });
+
+// delete button was clicked, iterate through the array and if current title exists, delete that
+$("#notesModule").on("click", "#deleteBtn", function() {
+    for(let i=0; i < notes.length; i++){
+        if (notes[i].title === $(this).parent().find("#title").val().trim()) {
+            notes.splice(i, 1);
+        }
+    }
+});
 // End Notes Module
 
 //Roll Dice EventListener
