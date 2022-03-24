@@ -82,8 +82,34 @@
           </div>
           </div>
         <div class="callout" id="charModule">
-          <h3>Create Your Character</h3>
-          <p>Create a note to record your fantasy adventures</p>
+          <h3>Characters</h3>
+          <p>Access your character sheets here.</p>
+          <div class="callout row">
+            <div class=" small-12 medium-6 columns">
+              <label>Character Name
+                <input type="text" placeholder="Character Name" id="charName">
+              </label>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Character Info
+                  <textarea placeholder="Description" id="charDesc"></textarea>
+                </label>
+              </div>
+              <div class="button-group">
+                <a class="button" id="saveBtn">Save</a>
+                <a class="button" id="deletBtn">Delete</a>
+                <a class="button" id="newBtn">New</a>
+              </div>
+            </div>
+            <div class="small-3 cell">
+              <label for="notes">Load Character</label>
+            </div>
+
+            <div class=""small-9 cell>
+              <select name="notes" id="notes"></select>
+            </div>
+        </div>
         </div>
       </div>
     <script src="./assets/js/vendor/jquery.js"></script>
