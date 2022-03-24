@@ -64,7 +64,7 @@ let generateFace = function(){
 }
 //End Face Generator Api
 
-///Open5e functions
+///Open5e API functions
 let monsterName = "dragon"
 
 let searchForMonster = function(){
@@ -76,7 +76,16 @@ let searchForMonster = function(){
     .then(function(data){
         console.log(data);
     })
-    
+}
+
+let searchClassFunction = function(){
+    fetch("https://api.open5e.com/classes/")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    });
 }
 
 
