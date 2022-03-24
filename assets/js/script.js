@@ -92,10 +92,13 @@ $("#notesModule").on("click", "#saveBtn", function() {
     let index = notes.findIndex(title);
 
     if (!index) {
-        notes[index].title = title;
+        notes.push = {
+            title: title,
+            text: text
+        }
+    } else {
+        notes[index].text = text;
     }
-    
-    notes[index].text = text;
     saveNotes();
 
     let textP = $("<p>").addClass("").text(text);
