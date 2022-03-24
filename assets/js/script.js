@@ -49,6 +49,26 @@ function XdY(x,y) {
 let saveNotes = function() {
     localStorage.setItem("notes", JSON.stringify(notes));
 }
+
+// note was clicked and editing can begin
+$("#notesModule").on("click", "#description", function() {
+    let text = $(this).text().trim();
+    let textInput = $("<textarea>").addClass("").valueOf(text);
+    $(this).replaceWith(textInput);
+    textInput.trigger("focus");
+});
+
+// save note when save button is clicked
+$("#notesModule").on("click", "#saveBtn", function() {
+    let text = $(this).parent().find("#description").val().trim();
+    let title = $(this).parent().find("#title").val().trim();
+
+    notes[title].text = text;
+    saveNotes();
+
+    let textP = $("<p>").addClass("").text(text);
+    $(this).parent().find("#description").replaceWith(textP);
+});
 // End Notes Module
 
 //Roll Dice EventListener
