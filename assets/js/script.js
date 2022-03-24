@@ -25,6 +25,10 @@ let rollFunction = function(){
     diceResult.textContent = outcome
 }
 
+let selectDice = function(){
+    console.log(this)
+}
+
 ///Dice Module
 //x=number of dice
 //y=number of sides

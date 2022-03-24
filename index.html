@@ -24,44 +24,40 @@
             <h3>Dice Roller</h3>
             <p>Choose your dice and how many of them you would like to roll!</p>
             <ul class="dropdown menu" data-dropdown-menu>
-              <li>
-                <a>Dice Type</a>
-                <ul class="menu">
-                  <li><a href="#0">d4</a></li>
-                  <li><a href="#0">d6</a></li>
-                  <li><a href="#0">d8</a></li>
-                  <li><a href="#0">d10</a></li>
-                  <li><a href="#0">d12</a></li>
-                  <li><a href="#0">d20</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#0">Dice Count</a>
-                <ul class="menu">
-                  <li><a href="#0">One</a></li>
-                  <li><a href="#0">Two</a></li>
-                  <li><a href="#0">Three</a></li>
-                  <li><a href="#0">Four</a></li>
-                  <li><a href="#0">Five</a></li>
-                  <li><a href="#0">Six</a></li>
-                </ul>
-              </li>
+                <label for="diceType">Dice Type:</label>
+                <select name="diceType" id="diceType">
+                    <option value="4">d4</option>
+                    <option value="6">d6</option>
+                    <option value="8">d8</option>
+                    <option value="10">d10</option>
+                    <option value="12">d12</option>
+                    <option value="20">d20</option>
+                </select>
+                <label for="diceCount">Dice Count:</label>
+                <select name="diceCount" id="diceCount">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
             </ul>
             <div class="small-6">
-              <a class="button" href="#0">Roll!</a>
+              <a class="button" id="diceBtn" href="#0">Roll!</a>
             </div>
             <div class="large-12 cell">
               <label>You Rolled:</label>
-              <textarea disabled placeholder="Good Luck!"></textarea>
+              <textarea id="diceResult" disabled placeholder="Good Luck!"></textarea>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="grid-x grid-padding-x">
-        <div class="large-8 medium-8 cell">
-          <h3>Notes</h3>
-          
+      
+    <div class="grid-x grid-padding-x" id="notesModule">Notes</div>
+
+    <div class="grid-x grid-padding-x" id="charModule">Character</div>
 
 
     <script src="./assets/js/vendor/jquery.js"></script>
