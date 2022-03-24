@@ -80,8 +80,13 @@ $("#notesModule").on("click", "#description", function() {
 $("#notesModule").on("click", "#saveBtn", function() {
     let text = $(this).parent().find("#description").val().trim();
     let title = $(this).parent().find("#title").val().trim();
+    let index = notes.findIndex(title);
 
-    notes[title].text = text;
+    if (!index) {
+        notes[index].title = title;
+    }
+    
+    notes[index].text = text;
     saveNotes();
 
     let textP = $("<p>").addClass("").text(text);
