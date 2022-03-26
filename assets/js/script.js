@@ -74,6 +74,7 @@ let loadNotes = function() {
 
 let saveNotes = function() {
     localStorage.setItem("notes", JSON.stringify(notes));
+    populateDropdown();
 }
 
 let populateDropdown = function() {
@@ -97,7 +98,6 @@ $("#notesModule").on("click", "#saveBtn", function() {
     let title = document.getElementById('title').value;
     let index = notes.findIndex(findTitle => findTitle.title === title);
 
-    console.log(index);
     if (title === '') {
         // PLEASE ENTER A TITLE POPUP
     } 
@@ -110,17 +110,18 @@ $("#notesModule").on("click", "#saveBtn", function() {
     } else {
         notes[index].text = text;
     }
-    console.log(notes);
     saveNotes();
 });
 
 // delete button was clicked, iterate through the array and if current title exists, delete that
 $("#notesModule").on("click", "#deleteBtn", function() {
-    for(let i=0; i < notes.length; i++){
-        if (notes[i].title === $(this).parent().find("#title").val().trim()) {
-            notes.splice(i, 1);
+    $.each(notes, function(arrayItem) {
+        if (notes[arrayItem].title === document.getElementById('title').value) {
+            notes.splice(arrayItem, 1);
         }
-    }
+    });
+    saveNotes();
+    populateDropdown();
 });
 // End Notes Module
 
