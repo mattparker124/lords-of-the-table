@@ -116,7 +116,6 @@ $("#notesModule").on("click", "#deleteBtn", function() {
         }
     });
     saveNotes();
-    populateDropdown();
 });
 
 $("#notesModule").on("click", "#loadBtn", function() {
@@ -124,7 +123,6 @@ $("#notesModule").on("click", "#loadBtn", function() {
     let title = document.getElementById('title');
     let selectedNote = savedNotesList.value;
 
-    console.log(selectedNote)
     $.each(notes, function(arrayItem) {
         if (arrayItem == selectedNote) {
             title.value = notes[arrayItem].title;
