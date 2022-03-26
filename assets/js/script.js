@@ -56,7 +56,8 @@ function XdY(x,y) {
 
 // Notes Module
 let changeNote = function(noteTitle) {
-    
+    let text = document.getElementById('description');
+    let title = document.getElementById('title');
 }
 
 let loadNotes = function() {
@@ -77,32 +78,23 @@ let saveNotes = function() {
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
-// note was clicked and editing can begin
-$("#notesModule").on("click", "#description", function() {
-    let text = $(this).text().trim();
-    let textInput = $("<textarea>").addClass("").valueOf(text);
-    $(this).replaceWith(textInput);
-    textInput.trigger("focus");
-});
-
 // save note when save button is clicked
 $("#notesModule").on("click", "#saveBtn", function() {
-    let text = $(this).parent().find("#description").val().trim();
-    let title = $(this).parent().find("#title").val().trim();
-    let index = notes.findIndex(title);
+    let text = document.getElementById('description').value;
+    let title = document.getElementById('title').value;
+    let index = notes.findIndex(findTitle => findTitle.title === title);
 
-    if (!index) {
-        notes.push = {
+    console.log(index);
+    if (index == -1) {
+        notes.push({
             title: title,
             text: text
-        }
+        })
     } else {
         notes[index].text = text;
     }
+    console.log(notes);
     saveNotes();
-
-    let textP = $("<p>").addClass("").text(text);
-    $(this).parent().find("#description").replaceWith(textP);
 });
 
 // delete button was clicked, iterate through the array and if current title exists, delete that
@@ -166,3 +158,5 @@ let searchRaceFunction = function(){
 
 //Roll Dice EventListener
 diceBtn.addEventListener('click', rollFunction);
+
+loadNotes();
