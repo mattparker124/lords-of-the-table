@@ -56,11 +56,6 @@ function XdY(x,y) {
 ///End Dice Module
 
 // Notes Module
-let changeNote = function(noteTitle) {
-    let text = document.getElementById('description');
-    let title = document.getElementById('title');
-}
-
 let loadNotes = function() {
     notes = JSON.parse(localStorage.getItem("notes"));
 
@@ -123,6 +118,20 @@ $("#notesModule").on("click", "#deleteBtn", function() {
     saveNotes();
     populateDropdown();
 });
+
+$("#notesModule").on("click", "#loadBtn", function() {
+    let text = document.getElementById('description');
+    let title = document.getElementById('title');
+    let selectedNote = savedNotesList.value;
+
+    console.log(selectedNote)
+    $.each(notes, function(arrayItem) {
+        if (arrayItem == selectedNote) {
+            title.value = notes[arrayItem].title;
+            text.value = notes[arrayItem].text;
+        }
+    });
+})
 // End Notes Module
 
 // Face Generator Api
