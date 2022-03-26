@@ -9,6 +9,7 @@ let diceResult = document.querySelector('#diceResult')
 
 // Notes Variables
 let notes = [];
+let savedNotesList = document.querySelector("#notes");
 
 // faceGen Variables
 let faceUrl = ""
@@ -68,14 +69,26 @@ let loadNotes = function() {
         notes = [];
     }
 
-    // loop over the notes
-    $.each(notes, function() {
-
-    })
+    populateDropdown();
 }
 
 let saveNotes = function() {
     localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+let populateDropdown = function() {
+    // remove all the notes from the dropdown so we can repopulate it
+    while (savedNotesList.firstChild) {
+        savedNotesList.removeChild(savedNotesList.lastChild);
+    }
+    // populate the dropdown
+        $.each(notes, function(arrayItem) {
+            var dropdownItemEl = document.createElement("option");
+            dropdownItemEl.setAttribute("value", arrayItem);
+            dropdownItemEl.innerHTML = notes[arrayItem].title;
+
+            savedNotesList.appendChild(dropdownItemEl);
+        })
 }
 
 // save note when save button is clicked
@@ -85,7 +98,11 @@ $("#notesModule").on("click", "#saveBtn", function() {
     let index = notes.findIndex(findTitle => findTitle.title === title);
 
     console.log(index);
-    if (index == -1) {
+    if (title === '') {
+        // PLEASE ENTER A TITLE POPUP
+    } 
+    // index of -1 means it is not in the array yet, so make a new entry
+    else if (index == -1) {
         notes.push({
             title: title,
             text: text
