@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    <title>Lords of the Table</title>
     <link rel="stylesheet" href="./assets/css/foundation.css">
     <link rel="stylesheet" href="./assets/css/app.css">
   </head>
@@ -23,39 +23,39 @@
           <div class="callout">
             <h3>Dice Roller</h3>
             <p>Choose your dice and how many of them you would like to roll!</p>
-            <ul class="dropdown menu" data-dropdown-menu>
-                <label for="diceType">Dice Type:</label>
-                <select name="diceType" id="diceType">
-                    <option value="4">d4</option>
-                    <option value="6">d6</option>
-                    <option value="8">d8</option>
-                    <option value="10">d10</option>
-                    <option value="12">d12</option>
-                    <option value="20">d20</option>
-                </select>
-                <label for="diceCount">Dice Count:</label>
-                <select name="diceCount" id="diceCount">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </ul>
-            <div class="small-6">
-              <a class="button" id="diceBtn" href="#0">Roll!</a>
-            </div>
-            <div class="large-12 cell">
-              <label>You Rolled:</label>
-              <textarea id="diceResult" disabled placeholder="Good Luck!"></textarea>
+            
+              <div class="row">
+                  <label for="diceType">Dice Type:</label>
+                  <select name="diceType" id="diceType">
+                      <option value="4">d4</option>
+                      <option value="6">d6</option>
+                      <option value="8">d8</option>
+                      <option value="10">d10</option>
+                      <option value="12">d12</option>
+                      <option value="20">d20</option>
+                  </select>
+                  <label for="diceCount">Dice Count:</label>
+                  <select name="diceCount" id="diceCount">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                  </select>
+              </div>
+              <div class="small-6">
+                <a class="expanded button" id="diceBtn">Roll!</a>
+              </div>
+              <div class="large-12 cell">
+                <label>You Rolled:</label>
+                <textarea id="diceResult" disabled placeholder="Good Luck!"></textarea>
             </div>
           </div>
           <div class="callout" id="notesModule">
             <h3>Notes</h3>
             <p>Create a note to record your fantasy adventures</p>
-            <div class="callout row">
-              <div class=" small-12 medium-6 columns">
+            <div class=" small-12 medium-6 columns">
                 <label>Note Title
                   <input type="text" placeholder="Note Title" id="title">
                 </label>
@@ -66,16 +66,50 @@
                     <textarea placeholder="Description" id="description"></textarea>
                   </label>
                 </div>
-                <div class="button-group">
+                <div class="expanded button-group">
                   <a class="button" id="saveBtn">Save</a>
                   <a class="button" id="deletBtn">Delete</a>
+                  <a class="button" id="newBtn">New</a>
                 </div>
               </div>
-          </div>
+              <div class="small-3 cell">
+                <label for="notes">Load Notes</label>
+              </div>
+
+              <div class=""small-9 cell>
+                <select name="notes" id="notes"></select>
+              </div>
+          
           </div>
         <div class="callout" id="charModule">
-          <h3>Create Your Character</h3>
-          <p>Create a note to record your fantasy adventures</p>
+          <h3>Characters</h3>
+          <p>Access your character sheets here.</p>
+          
+            <div class=" small-12 medium-6 columns">
+              <label>Character Name
+                <input type="text" placeholder="Character Name" id="charName">
+              </label>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Character Info
+                  <textarea placeholder="Description" id="charDesc"></textarea>
+                </label>
+              </div>
+              <div class="expanded button-group">
+                <a class="button" id="saveBtn">Save</a>
+                <a class="button" id="deletBtn">Delete</a>
+                <a class="button" id="newBtn">New</a>
+              </div>
+            </div>
+            <div class="small-3 cell">
+              <label for="notes">Load Character</label>
+            </div>
+
+            <div class=""small-9 cell>
+              <select name="notes" id="notes"></select>
+            </div>
+        
         </div>
       </div>
     <script src="./assets/js/vendor/jquery.js"></script>
