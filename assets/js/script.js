@@ -133,6 +133,8 @@ $("#notesModule").on("click", "#loadBtn", function() {
 // End Notes Module
 
 // Face Generator Api
+let faceEl = document.querySelector('#faceEl');
+
 let generateFace = function(){
     let result = ""
     let poolLength = characters.length;
@@ -140,23 +142,62 @@ let generateFace = function(){
         result += characters.charAt(Math.random()*poolLength);
     }
     generatorString = result;
+
     faceUrl = "https://robohash.org/"+generatorString+".png?set=set5"
+
     console.log(faceUrl);
+
+    faceEl.setAttribute("src", faceUrl);
 }
 //End Face Generator Api
 
-///Open5e API functions
+//Character Module
+let classArray = [];
+let raceArray = [];
+let monsterArray = [];
+let maxMonsters = 10;
 let monsterName = "dragon"
+let raceSelect = document.querySelector('#raceSelect');
+let npcBtn = document.querySelector('#npcButton');
+let searchField = document.querySelector('#monsterSearch');
+let monsterResults = document.querySelector('#monsterSelect');
+let monsterList = document.querySelector('#monsterList');
+let createBtn = document.querySelector('#createMonsterBtn');
+let generateBtn = document.querySelector('#faceGenerateBtn');
 
+///Open5e API functions
 let searchForMonster = function(){
-    
+    monsterName = searchField.value
+    console.log(monsterName)
+
     fetch("https://api.open5e.com/monsters/?search="+monsterName)
     .then(function(response){
          return response.json();
      })
     .then(function(data){
         console.log(data);
+        console.log(data.count);
+        let monsterCount = maxMonsters;
+        if (data.count < maxMonsters){
+            monsterCount = data.count;   
+        }
+        for (let i=0;i<monsterCount;i++){
+            monsterArray[i] = data.results[i]
+        }
     })
+    .then(function(){
+        while (monsterList.firstChild) {
+            monsterList.removeChild(monsterList.lastChild);
+        }
+        $.each(monsterArray, function(arrayItem) {
+            var dropdownItemEl = document.createElement("option");
+            dropdownItemEl.setAttribute("value", arrayItem);
+            dropdownItemEl.innerHTML = monsterArray[arrayItem].name;
+
+            monsterList.appendChild(dropdownItemEl);
+        })
+    })
+
 }
 
 let searchClassFunction = function(){
@@ -166,7 +207,19 @@ let searchClassFunction = function(){
     })
     .then(function(data){
         console.log(data);
-    });
+        console.log(data.count)
+        for (let i = 0;i < data.count;i++){
+            classArray[i] = data.results[i]
+         }
+         console.log(classArray);
+    })
+    .then(function(){
+        for (let i=0;i<classArray.length;i++){
+            let nextEntry = document.createElement('option')
+            nextEntry.textContent = classArray[i].name
+           classSelect.appendChild(nextEntry);
+        }
+    })
 }
 
 let searchRaceFunction = function(){
@@ -176,8 +229,30 @@ let searchRaceFunction = function(){
     })
     .then(function(data){
         console.log(data);
-    });
+        console.log(data.count)
+        for (let i = 0;i < data.count;i++){
+            raceArray[i] = data.results[i]
+         }
+         console.log(raceArray);
+    })
+    .then(function(){
+        for (let i=0;i<raceArray.length;i++){
+            let nextEntry = document.createElement('option')
+            nextEntry.textContent = raceArray[i].name
+            raceSelect.appendChild(nextEntry);
+        }
+    })
 }
+
+let pullNpcData = function(){
+    searchClassFunction();
+    searchRaceFunction();
+};
+
+monsterSearchBtn.addEventListener('click', searchForMonster);
+generateBtn.addEventListener('click', generateFace);
+
+pullNpcData();
 //End open5e functions
 
 
