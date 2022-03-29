@@ -99,8 +99,8 @@
               </div>
               <div class="expanded button-group">
                 <a class="button" id="saveBtn">Save</a>
-                <a class="button" id="deletBtn">Delete</a>
-                <a class="button" id="newBtn">New</a>
+                <a class="button" id="deleteBtn">Delete</a>
+                <a class="button" data-open="charModal" id="newBtn">New</a>
               </div>
             </div>
             <div class="small-3 cell">
@@ -113,6 +113,40 @@
         
         </div>
       </div>
+
+      <div class="reveal" id="charModal" data-reveal>
+        <p>What type of Character do you need?</p>
+        <button class="button" data-open="npcModal">NPC</button>
+        <button class="button" data-open="monsterModal">Monster</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class = "reveal" id="npcModal" data-reveal>
+        <p>Race:</p><select name="raceSelect" id="raceSelect"></select>
+        <p>Class:</p><select name="classSelect" id="classSelect"></select>
+        <button class="button" id="faceGenerateBtn">Generate Face</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img id="faceEl">
+      </div>
+
+      <div class = "reveal" id="monsterModal" data-reveal>
+        <p>Search for a Monster:</p>
+        <input id="monsterSearch">
+        <button class="button" data-open="monsterSelect" id="monsterSearchBtn">Search</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="reveal" id="monsterSelect" data-reveal>
+        <select id="monsterList"></select>
+        <button class="button" id="createMonsterBtn">Create Monster!</button>
+      </div>
+
     <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/what-input.js"></script>
     <script src="./assets/js/vendor/foundation.js"></script>
