@@ -1,7 +1,7 @@
 # Lords Of The Table
 
 ## Purpose
-A functional DM companion app to track notes, dice rolls, music, and more. (Data saved locally)
+A functional DM companion app to track notes, dice rolls, enemies and Characters. (Data saved locally)
 
 ## Built with
 * HTML
