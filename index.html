@@ -98,17 +98,18 @@
                 </label>
               </div>
               <div class="expanded button-group">
-                <a class="button" id="saveBtn">Save</a>
-                <a class="button" id="deleteBtn">Delete</a>
+                <a class="button" id="saveBtn2">Save</a>
+                <a class="button" id="deleteBtn2">Delete</a>
+                <a class="button" id="loadBtn2">Load</a>
                 <a class="button" data-open="charModal" id="newBtn">New</a>
               </div>
             </div>
             <div class="small-3 cell">
-              <label for="notes">Load Character</label>
+              <label for="chars">Load Character</label>
             </div>
 
             <div class=""small-9 cell>
-              <select name="notes" id="notes"></select>
+              <select name="chars" id="chars"></select>
             </div>
         
         </div>
@@ -127,6 +128,7 @@
         <p>Race:</p><select name="raceSelect" id="raceSelect"></select>
         <p>Class:</p><select name="classSelect" id="classSelect"></select>
         <button class="button" id="faceGenerateBtn">Generate Face</button>
+        <button class="button" data-close id="createNpcBtn">Create Character!</button>
         <button class="close-button" data-close aria-label="Close modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -144,7 +146,7 @@
 
       <div class="reveal" id="monsterSelect" data-reveal>
         <select id="monsterList"></select>
-        <button class="button" id="createMonsterBtn">Create Monster!</button>
+        <button class="button" data-close id="createMonsterBtn">Create Monster!</button>
       </div>
 
     <script src="./assets/js/vendor/jquery.js"></script>

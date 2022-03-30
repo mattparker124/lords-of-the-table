@@ -164,6 +164,94 @@ let monsterResults = document.querySelector('#monsterSelect');
 let monsterList = document.querySelector('#monsterList');
 let createBtn = document.querySelector('#createMonsterBtn');
 let generateBtn = document.querySelector('#faceGenerateBtn');
+let createNpcBtn = document.querySelector('#createNpcBtn');
+let charDesc = document.querySelector('#charDesc');
+let charName = document.querySelector('#charName');
+let createMonsterBtn = document.querySelector("#createMonsterBtn");
+
+// Char Variables
+let chars = [];
+let savedCharsList = document.querySelector("#chars");
+
+//populate characters
+let loadChars = function() {
+    chars = JSON.parse(localStorage.getItem("chars"));
+
+    // if nothing is in localStorage, create a new array to track
+    if (!chars) {
+        chars = [];
+    }
+    console.log(chars)
+    charsDropdown();
+}
+
+let saveChars = function() {
+    console.log("saving characters")
+    localStorage.setItem("chars", JSON.stringify(chars));
+    charsDropdown();
+}
+
+let charsDropdown = function() {
+    // remove all the chars from the dropdown so we can repopulate it
+    while (savedCharsList.firstChild) {
+        savedCharsList.removeChild(savedCharsList.lastChild);
+    }
+    // populate the dropdown
+        $.each(chars, function(arrayItem) {
+            var dropdownItemEl = document.createElement("option");
+            dropdownItemEl.setAttribute("value", arrayItem);
+            dropdownItemEl.innerHTML = chars[arrayItem].title;
+
+            savedCharsList.appendChild(dropdownItemEl);
+        })
+}
+
+// save char when save button is clicked
+$("#charModule").on("click", "#saveBtn2", function() {
+    
+    let text = document.getElementById('charDesc').value;
+    let title = document.getElementById('charName').value;
+    let index = chars.findIndex(findTitle => findTitle.title === title);
+
+    if (title === '') {
+        // PLEASE ENTER A TITLE POPUP
+    } 
+    // index of -1 means it is not in the array yet, so make a new entry
+    else if (index == -1) {
+        chars.push({
+            title: title,
+            text: text
+        })
+    } else {
+        chars[index].text = text;
+    }
+    saveChars();
+});
+
+// delete button was clicked, iterate through the array and if current title exists, delete that
+$("#charModule").on("click", "#deleteBtn2", function() {
+    $.each(chars, function(arrayItem) {
+        if (chars[arrayItem].title === document.getElementById('charName').value) {
+            chars.splice(arrayItem, 1);
+        }
+    });
+    saveChars();
+});
+
+//load button was clicked
+$("#charModule").on("click", "#loadBtn2", function() {
+    console.log("clicked")
+    let text = document.getElementById('charDesc');
+    let title = document.getElementById('charName');
+    let selectedChar = savedCharsList.value;
+
+    $.each(chars, function(arrayItem) {
+        if (arrayItem == selectedChar) {
+            title.value = chars[arrayItem].title;
+            text.value = chars[arrayItem].text;
+        }
+    });
+})
 
 ///Open5e API functions
 let searchForMonster = function(){
@@ -247,10 +335,23 @@ let searchRaceFunction = function(){
 let pullNpcData = function(){
     searchClassFunction();
     searchRaceFunction();
-};
+}
+
+let createNpc = function(){
+    console.log(raceSelect.value)
+    charDesc.textContent = raceSelect.value + " " + classSelect.value
+}
+
+let createMonster = function(){
+    console.log('creating monster')
+    charName.value = monsterArray[monsterList.value].name
+    charDesc.value = "Str: "+monsterArray[monsterList.value].strength+". Dex: "+monsterArray[monsterList.value].dexterity+". Con: "+monsterArray[monsterList.value].constitution+". Int: "+monsterArray[monsterList.value].intelligence+". Wis: "+monsterArray[monsterList.value].wisdom+". Cha: "+monsterArray[monsterList.value].charisma+". "
+}
 
 monsterSearchBtn.addEventListener('click', searchForMonster);
 generateBtn.addEventListener('click', generateFace);
+createNpcBtn.addEventListener('click', createNpc);
+createMonsterBtn.addEventListener('click', createMonster)
 
 pullNpcData();
 //End open5e functions
@@ -260,3 +361,4 @@ pullNpcData();
 diceBtn.addEventListener('click', rollFunction);
 
 loadNotes();
+loadChars();
