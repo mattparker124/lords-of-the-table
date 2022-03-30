@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,3 +29,164 @@
     <script src="./assets/js/"></script>
 </body>
 </html>
+=======
+
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lords of the Table</title>
+    <link rel="stylesheet" href="./assets/css/foundation.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="https://use.typekit.net/uqu4zmw.css">
+  </head>
+<body>
+
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12  text-center cell">
+          <img src="./assets/images/lottlogo.png" alt="Lords of the Table logo" width="600">
+        </div>
+      </div>
+
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <div class="callout">
+            <h3>Dice Roller</h3>
+            <p>Choose your dice and how many of them you would like to roll!</p>
+            
+              <div class="row">
+                  <label for="diceType">Dice Type:</label>
+                  <select name="diceType" id="diceType">
+                      <option value="4">d4</option>
+                      <option value="6">d6</option>
+                      <option value="8">d8</option>
+                      <option value="10">d10</option>
+                      <option value="12">d12</option>
+                      <option value="20">d20</option>
+                  </select>
+                  <label for="diceCount">Dice Count:</label>
+                  <select name="diceCount" id="diceCount">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                  </select>
+              </div>
+              <div class="small-6">
+                <a class="expanded button" id="diceBtn">Roll!</a>
+              </div>
+              <div class="large-12 cell">
+                <label>You Rolled:</label>
+                <textarea id="diceResult" disabled placeholder="Good Luck!"></textarea>
+            </div>
+          </div>
+          <div class="callout" id="notesModule">
+            <h3>Notes</h3>
+            <p>Create a note to record your fantasy adventures</p>
+            <div class=" small-12 medium-6 columns">
+                <label>Note Title
+                  <input type="text" placeholder="Note Title" id="title">
+                </label>
+              </div>
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <label>Note
+                    <textarea placeholder="Description" id="description"></textarea>
+                  </label>
+                </div>
+                <div class="expanded button-group">
+                  <a class="button" id="saveBtn">Save</a>
+                  <a class="button" id="deleteBtn">Delete</a>
+                  <a class="button" id="loadBtn">Load</a>
+                </div>
+              </div>
+              <div class="small-3 cell">
+                <label for="notes">Load Notes</label>
+              </div>
+
+              <div class="small-9 cell">
+                <select name="notes" id="notes"></select>
+              </div>
+          
+          </div>
+        <div class="callout" id="charModule">
+          <h3>Characters</h3>
+          <p>Access your character sheets here.</p>
+          
+            <div class=" small-12 medium-6 columns">
+              <label>Character Name
+                <input type="text" placeholder="Character Name" id="charName">
+              </label>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <label>Character Info
+                  <textarea placeholder="Description" id="charDesc"></textarea>
+                </label>
+              </div>
+              <div class="expanded button-group">
+                <a class="button" id="saveBtn2">Save</a>
+                <a class="button" id="deleteBtn2">Delete</a>
+                <a class="button" id="loadBtn2">Load</a>
+                <a class="button" data-open="charModal" id="newBtn">New</a>
+              </div>
+            </div>
+            <div class="small-3 cell">
+              <label for="chars">Load Character</label>
+            </div>
+
+            <div class=""small-9 cell>
+              <select name="chars" id="chars"></select>
+            </div>
+        
+        </div>
+      </div>
+
+      <div class="reveal" id="charModal" data-reveal>
+        <p>What type of Character do you need?</p>
+        <button class="button" data-open="npcModal">NPC</button>
+        <button class="button" data-open="monsterModal">Monster</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class = "reveal" id="npcModal" data-reveal>
+        <p>Race:</p><select name="raceSelect" id="raceSelect"></select>
+        <p>Class:</p><select name="classSelect" id="classSelect"></select>
+        <button class="button" id="faceGenerateBtn">Generate Face</button>
+        <button class="button" data-close id="createNpcBtn">Create Character!</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img id="faceEl">
+      </div>
+
+      <div class = "reveal" id="monsterModal" data-reveal>
+        <p>Search for a Monster:</p>
+        <input id="monsterSearch">
+        <button class="button" data-open="monsterSelect" id="monsterSearchBtn">Search</button>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="reveal" id="monsterSelect" data-reveal>
+        <select id="monsterList"></select>
+        <button class="button" data-close id="createMonsterBtn">Create Monster!</button>
+      </div>
+
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
+>>>>>>> develop
